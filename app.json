@@ -1,0 +1,12 @@
+{
+  "name": "WaterMelon",
+  "displayName": "WaterMelon",
+  "expo": {
+    "name": "WaterMelon",
+    "slug": "WaterMelon",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
