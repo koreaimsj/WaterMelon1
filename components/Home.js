@@ -23,13 +23,13 @@ const Home = ({navigation}) => {
     
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <ImageBackground source={require("../image/watermelon.jpg" )}style={styles.bg}>
-      <Button title="플레이리스트로이동"onPress={() => navigation.navigate(List)}>
+      <Button title="플레이리스트로이동"onPress={() => navigation.navigate(List)} color="black">
       </Button>
-      <SearchBar platform={"android"} containerStyle={{width:'80%'}}
-        placeholder="검색"
+      {/* <SearchBar platform={"android"} containerStyle={{width:'80%'}}
+         placeholder="검색"
         onChangeText={handleSearch}
         value={keyword}
-      />
+      /> */}
       <SearchList navigation={navigation} keyword={keyword}></SearchList>         
         
     </ImageBackground>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements'
 
@@ -9,6 +9,8 @@ import { removeAction } from '../redux/actions'
 import { LISTDATA } from '../shared/list'
 
 import Youtube from './Youtube'
+
+import api from '../api/list'
 
 // 함수의 리턴 값이 JSX.Element면
 // React 컴포넌트가 된다.
@@ -24,8 +26,12 @@ const Details = ( { route, navigation }) => {
   // const id = route.params.id;
   const { id } = route.params;
 
-  const item = LISTDATA.filter(item => item.id == id)[0];
-  console.log(item);
+  const [item, setItem] = useState({});
+
+  // console.log("videoId:")
+  // console.log(item.videoId);
+  // const item = LISTDATA.filter(item => item.id == id)[0];
+  // console.log(item);
 
   const dispatch = useDispatch();
 
@@ -36,6 +42,18 @@ const Details = ( { route, navigation }) => {
   const isExistedAction = actions.filter(item => item.id == id).length > 0 ? true : false;
   console.log("--isExistedAction--");
   console.log(isExistedAction);
+
+  const getDetails = useCallback(async () => {
+    const result = await api.get(id);
+    console.log(result.data);
+    setItem(result.data);
+    console.log("videoId:")
+    console.log(result.data.videoid);
+  }, [])
+
+  useEffect(()=>{
+    getDetails();
+  }, []);
 
   return (
     <>
